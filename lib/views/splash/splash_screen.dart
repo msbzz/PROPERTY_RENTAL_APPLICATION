@@ -54,6 +54,26 @@ class SplashScreen extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(height: 48.h),
+            TweenAnimationBuilder(
+              tween: Tween<double>(begin: 0.0, end: 1.0),
+              duration: Duration(milliseconds: 1500),
+              builder: (context, double value, child) {
+                return Opacity(
+                  opacity: value,
+                  child: SizedBox(
+                    width: 40.w,
+                    height: 40.w,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        AppColors.primary,
+                      ),
+                      strokeWidth: 3,
+                    ),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
