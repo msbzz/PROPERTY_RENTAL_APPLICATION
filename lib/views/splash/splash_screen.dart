@@ -34,6 +34,26 @@ class SplashScreen extends StatelessWidget {
                 );
               },
             ),
+            SizedBox(height: 32.h),
+            TweenAnimationBuilder(
+              tween: Tween<double>(begin: 0.0, end: 1.0),
+              duration: Duration(milliseconds: 1500),
+              builder: (context, double value, child) {
+                return Opacity(opacity: value, child: child);
+              },
+              child: Column(
+                children: [
+                  Text(
+                    'HomeRental',
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      color: AppColors.textSecondary,
+                      letterSpacing: 0.5,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
