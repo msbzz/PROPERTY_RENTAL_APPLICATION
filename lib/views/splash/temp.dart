@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
-import 'package:rental_application/core/constants/app_constants.dart';
 import 'package:rental_application/core/constants/color_constants.dart';
-import 'package:rental_application/core/services/storage_sevice.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,38 +13,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _navigateToNextScreen();
-  }
-
-  void _navigateToNextScreen() async {
-    try {
-      await Future.delayed(AppConstants.splashDuration);
-
-      if (!mounted) return;
-      final isFirstTime = await StorageService.isFirstTimeUser();
-      if (!mounted) return;
-      if (isFirstTime) {
-        await StorageService.isFirstTimeUser();
-        if (!mounted) return;
-        if (context.mounted) {
-          context.pushReplacement('/onboarding');
-        } else {
-          if (context.mounted) {
-            context.pushReplacement('/auth');
-          }
-        }
-      }
-    } catch (e) {
-      debugPrint('Navigation erro: $e');
-      if (mounted) {
-        context.pushReplacement('/onboarding');
-      }
-    }
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
+    // Se quiser navegar depois de alguns segundos, você pode colocar aqui.
+    // Ex:
+    // Future.delayed(const Duration(seconds: 2), () {
+    //   if (!mounted) return;
+    //   Navigator.pushReplacementNamed(context, '/home');
+    // });
   }
 
   @override
@@ -60,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             TweenAnimationBuilder(
               tween: Tween<double>(begin: 0.0, end: 1.0),
-              duration: Duration(milliseconds: 1500),
+              duration: const Duration(milliseconds: 1500),
               builder: (context, double value, child) {
                 return Transform.scale(
                   scale: value,
@@ -71,38 +42,48 @@ class _SplashScreenState extends State<SplashScreen> {
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
-                      Icons.home_rounded,
-                      size: 72.w,
+                      Icons.home_outlined,
                       color: AppColors.primary,
+                      size: 80.w,
                     ),
                   ),
                 );
               },
             ),
-            SizedBox(height: 32.h),
+            SizedBox(height: 24.h),
             TweenAnimationBuilder(
               tween: Tween<double>(begin: 0.0, end: 1.0),
-              duration: Duration(milliseconds: 1500),
+              duration: const Duration(milliseconds: 1500),
               builder: (context, double value, child) {
-                return Opacity(opacity: value, child: child);
-              },
-              child: Column(
-                children: [
-                  Text(
-                    'HomeRental',
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      color: AppColors.textSecondary,
-                      letterSpacing: 0.5,
-                    ),
+                return Opacity(
+                  opacity: value,
+                  child: Column(
+                    children: [
+                      Text(
+                        'Rental App',
+                        style: TextStyle(
+                          color: AppColors.primary,
+                          fontSize: 32.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 8.h),
+                      Text(
+                        'Encontre o lugar perfeito',
+                        style: TextStyle(
+                          color: AppColors.textSecondary,
+                          fontSize: 16.sp,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                );
+              },
             ),
             SizedBox(height: 48.h),
             TweenAnimationBuilder(
               tween: Tween<double>(begin: 0.0, end: 1.0),
-              duration: Duration(milliseconds: 1500),
+              duration: const Duration(milliseconds: 1500),
               builder: (context, double value, child) {
                 return Opacity(
                   opacity: value,
