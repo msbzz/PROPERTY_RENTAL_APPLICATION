@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:rental_application/core/constants/color_constants.dart';
 import 'package:rental_application/models/onboarding_content.dart';
 import 'package:rental_application/views/onboarding/widgets/Onboarding_page.dart';
@@ -53,10 +54,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             left: 0,
             right: 0,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(
                     _contents.length,
                     (index) => AnimatedContainer(
@@ -71,6 +71,50 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         borderRadius: BorderRadius.circular(4.r),
                       ),
                     ),
+                  ),
+                ),
+                SizedBox(height: 32.h),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextButton(
+                        onPressed: () => context.go('/auth'),
+                        child: Text(
+                          'Skip',
+                          style: TextStyle(
+                            color: AppColors.surface,
+                            fontSize: 16.sp,
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(
+                        width: 120.w,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.surface,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 12.w,
+                              vertical: 16.h,
+                            ),
+                          ),
+                          child: Text(
+                            _currentPage == _contents.length - 1
+                                ? 'Get Started'
+                                : 'Next',
+                            style: TextStyle(
+                              color: AppColors.primary,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
