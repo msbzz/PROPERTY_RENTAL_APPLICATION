@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rental_application/controllers/auth_controller.dart';
+import 'package:rental_application/core/common/widgets/custom_button.dart';
 import 'package:rental_application/core/common/widgets/custom_textfield.dart';
 import 'package:rental_application/core/constants/color_constants.dart';
 import 'package:rental_application/core/constants/text_constants.dart';
@@ -18,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool _obscurePassword = true;
-  bool _isLoading = true;
+  bool _isLoading = false;
   UserRole _selectedRole = UserRole.tenant;
 
   @override
@@ -141,6 +142,25 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
+                  ),
+                  SizedBox(height: 32.h),
+                  CustomButton(
+                    text: 'Sign In',
+                    isLoading: _isLoading,
+                    onPressed: () {},
+                    height: 56.h,
+                  ),
+                  SizedBox(height: 24.h),
+                  Row(
+                    children: [
+                      Text(
+                        'Dont\'have an account ?',
+                        style: TextStyle(
+                          color: AppColors.textSecondary,
+                          fontSize: 14.sp,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
