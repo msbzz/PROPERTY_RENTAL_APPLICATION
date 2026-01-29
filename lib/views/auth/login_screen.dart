@@ -98,6 +98,28 @@ class _LoginScreenState extends State<LoginScreen> {
                     return null;
                   },
                 ),
+                CustomTextField(
+                  label: 'Password',
+                  prefixIcon: Icons.password_outlined,
+                  keyboardType: TextInputType.visiblePassword,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your password';
+                    }
+                    return null;
+                  },
+                  suffixIcon: IconButton(
+                    onPressed: () =>
+                        setState(() => _obscurePassword = !_obscurePassword),
+                    icon: Icon(
+                      _obscurePassword
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      color: AppColors.textSecondary,
+                      size: 20.sp,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
