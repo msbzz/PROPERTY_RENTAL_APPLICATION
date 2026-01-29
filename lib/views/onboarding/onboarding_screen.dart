@@ -94,11 +94,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       SizedBox(
                         width: 120.w,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            if (_currentPage == _contents.length) {
+                              context.go('/auth');
+                            } else {
+                              _pageController.nextPage(
+                                duration: Duration(milliseconds: 300),
+                                curve: Curves.easeInOut,
+                              );
+                            }
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.surface,
                             padding: EdgeInsets.symmetric(
-                              horizontal: 12.w,
+                              horizontal: 8.w,
                               vertical: 16.h,
                             ),
                           ),
