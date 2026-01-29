@@ -27,100 +27,105 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: AppColors.background,
       appBar: AppBar(title: Text('Onboarding Screen')),
       body: SafeArea(
-        child: Padding(
-          key: _formKey,
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
-          child: Form(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 60.h),
-                Center(
-                  child: Column(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(16.w),
-                        decoration: BoxDecoration(
-                          color: AppColors.primary.withValues(alpha: 0.1),
-                          shape: BoxShape.circle,
+        child: SingleChildScrollView(
+          child: Padding(
+            key: _formKey,
+            padding: EdgeInsets.symmetric(horizontal: 24.w),
+            child: Form(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 60.h),
+                  Center(
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(16.w),
+                          decoration: BoxDecoration(
+                            color: AppColors.primary.withValues(alpha: 0.1),
+                            shape: BoxShape.circle,
+                          ),
+                          child: Icon(
+                            Icons.home_rounded,
+                            size: 48.w,
+                            color: AppColors.primary,
+                          ),
                         ),
-                        child: Icon(
-                          Icons.home_rounded,
-                          size: 48.w,
-                          color: AppColors.primary,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 48.h),
-                Text(
-                  AppTexts.welcomeBack,
-                  style: TextStyle(
-                    fontSize: 28.sp,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.textPrimary,
-                  ),
-                ),
-                SizedBox(height: 8.h),
-                Text(
-                  'Sign into to continue',
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.textSecondary,
-                  ),
-                ),
-                SizedBox(height: 32.h),
-                Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.surface,
-                    borderRadius: BorderRadius.circular(12.r),
-                  ),
-                  child: Row(
-                    children: [
-                      Expanded(child: _buildRoleTab(UserRole.tenant, 'Tenant')),
-                      Expanded(
-                        child: _buildRoleTab(UserRole.landlord, 'Landlord'),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 24.h),
-                CustomTextField(
-                  label: 'Email',
-                  prefixIcon: Icons.email_outlined,
-                  keyboardType: TextInputType.emailAddress,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your email';
-                    }
-                    return null;
-                  },
-                ),
-                CustomTextField(
-                  label: 'Password',
-                  prefixIcon: Icons.password_outlined,
-                  keyboardType: TextInputType.visiblePassword,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your password';
-                    }
-                    return null;
-                  },
-                  suffixIcon: IconButton(
-                    onPressed: () =>
-                        setState(() => _obscurePassword = !_obscurePassword),
-                    icon: Icon(
-                      _obscurePassword
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                      color: AppColors.textSecondary,
-                      size: 20.sp,
+                      ],
                     ),
                   ),
-                ),
-              ],
+                  SizedBox(height: 38.h),
+                  Text(
+                    AppTexts.welcomeBack,
+                    style: TextStyle(
+                      fontSize: 28.sp,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.textPrimary,
+                    ),
+                  ),
+                  SizedBox(height: 8.h),
+                  Text(
+                    'Sign into to continue',
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
+                  SizedBox(height: 32.h),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.surface,
+                      borderRadius: BorderRadius.circular(12.r),
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: _buildRoleTab(UserRole.tenant, 'Tenant'),
+                        ),
+                        Expanded(
+                          child: _buildRoleTab(UserRole.landlord, 'Landlord'),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 24.h),
+                  CustomTextField(
+                    label: 'Email',
+                    prefixIcon: Icons.email_outlined,
+                    keyboardType: TextInputType.emailAddress,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your email';
+                      }
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 16.h),
+                  CustomTextField(
+                    label: 'Password',
+                    prefixIcon: Icons.password_outlined,
+                    keyboardType: TextInputType.visiblePassword,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your password';
+                      }
+                      return null;
+                    },
+                    suffixIcon: IconButton(
+                      onPressed: () =>
+                          setState(() => _obscurePassword = !_obscurePassword),
+                      icon: Icon(
+                        _obscurePassword
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        color: AppColors.textSecondary,
+                        size: 20.sp,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
