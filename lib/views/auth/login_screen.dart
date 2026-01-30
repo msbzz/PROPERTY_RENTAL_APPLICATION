@@ -32,9 +32,9 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            key: _formKey,
             padding: EdgeInsets.symmetric(horizontal: 24.w),
             child: Form(
+              key: _formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -95,6 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 24.h),
                   CustomTextField(
                     label: 'Email',
+                    controller: _emailController,
                     prefixIcon: Icons.email_outlined,
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
@@ -107,6 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 16.h),
                   CustomTextField(
                     label: 'Password',
+                    controller: _passwordController,
                     prefixIcon: Icons.password_outlined,
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: _obscurePassword,
@@ -189,14 +191,20 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _handleLogin() async {
-    if (_formKey.currentState!.validate()) {
+    if (_formKey.currentState?.validate() ?? false) {
       setState(() => _isLoading = true);
+
+      debugPrint(
+        'ANTES do loginWithRole | role=$_selectedRole | email=${_emailController.text}',
+      );
       try {
         final user = await _authController.loginWithRole(
           _emailController.text,
           _passwordController.text,
           _selectedRole,
         );
+
+        debugPrint('LoginScreen => mounted ${mounted} - user ${user} ');
 
         if (mounted && user != null) {
           context.go(
