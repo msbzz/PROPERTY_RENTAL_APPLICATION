@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:rental_application/main_layout.dart';
+import 'package:rental_application/views/auth/forgot_password_screen.dart';
 import 'package:rental_application/views/auth/login_screen.dart';
 import 'package:rental_application/views/auth/register_screen.dart';
 import 'package:rental_application/views/booking/bookings_list/booking_list_screen.dart';
@@ -38,7 +39,13 @@ final router = GoRouter(
       name: 'registrer',
       builder: (context, state) => RegisterScreen(),
     ),
+    GoRoute(
+      path: '/forgot-password',
+      name: 'forgot-password',
+      builder: (context, state) => ForgotPasswordScreen(),
+    ),
 
+    // tenant routes
     ShellRoute(
       builder: (context, state, child) =>
           MainLayout(location: state.uri.toString(), child: child),

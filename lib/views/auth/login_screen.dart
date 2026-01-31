@@ -134,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () => context.push('/forgot-password'),
                       style: TextButton.styleFrom(
                         foregroundColor: AppColors.primary,
                         padding: EdgeInsets.symmetric(horizontal: 8.w),
@@ -204,7 +204,7 @@ class _LoginScreenState extends State<LoginScreen> {
           _selectedRole,
         );
 
-        debugPrint('LoginScreen => mounted ${mounted} - user ${user} ');
+        debugPrint('LoginScreen => mounted $mounted - user $user ');
 
         if (mounted && user != null) {
           context.go(
