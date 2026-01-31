@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:rental_application/main_layout.dart';
 import 'package:rental_application/views/auth/login_screen.dart';
+import 'package:rental_application/views/auth/register_screen.dart';
 import 'package:rental_application/views/booking/bookings_list/booking_list_screen.dart';
 import 'package:rental_application/views/chat/messages_screen.dart';
 import 'package:rental_application/views/favorites/favorites_screen.dart';
@@ -32,6 +33,12 @@ final router = GoRouter(
       name: 'auth',
       builder: (context, state) => LoginScreen(),
     ),
+    GoRoute(
+      path: '/register',
+      name: 'registrer',
+      builder: (context, state) => RegisterScreen(),
+    ),
+
     ShellRoute(
       builder: (context, state, child) =>
           MainLayout(location: state.uri.toString(), child: child),
