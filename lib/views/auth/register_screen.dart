@@ -21,8 +21,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _fullNameController = TextEditingController();
   final _authController = AuthController();
   final _formKey = GlobalKey<FormState>();
-  bool _obscurePassword = false;
-  bool _obscureConfirmePassword = false;
+  bool _obscurePassword = true;
+  bool _obscureConfirmePassword = true;
   bool _isLoading = false;
   UserRole _selectedRole = UserRole.tenant;
 
@@ -104,6 +104,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     label: 'Email',
                     prefixIcon: Icons.email_outlined,
                     keyboardType: TextInputType.emailAddress,
+                  ),
+                  SizedBox(height: 16.h),
+                  CustomTextField(
+                    controller: _passwordController,
+                    label: 'Password',
+                    prefixIcon: Icons.lock_outline,
+                    keyboardType: TextInputType.visiblePassword,
+                    obscureText: _obscurePassword,
+                    suffixIcon: IconButton(
+                      onPressed: () =>
+                          setState(() => _obscurePassword = !_obscurePassword),
+                      icon: Icon(
+                        _obscurePassword
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                        color: AppColors.textSecondary,
+                        size: 20.sp,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 16.h),
+                  CustomTextField(
+                    controller: _passwordController,
+                    label: 'Confirm Password',
+                    prefixIcon: Icons.password_outlined,
+                    keyboardType: TextInputType.visiblePassword,
+                    obscureText: _obscureConfirmePassword,
                   ),
                 ],
               ),
