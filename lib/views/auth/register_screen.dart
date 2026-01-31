@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rental_application/controllers/auth_controller.dart';
+import 'package:rental_application/core/common/widgets/custom_button.dart';
 import 'package:rental_application/core/common/widgets/custom_textfield.dart';
 import 'package:rental_application/core/constants/color_constants.dart';
 import 'package:rental_application/core/constants/text_constants.dart';
@@ -126,11 +127,34 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 16.h),
                   CustomTextField(
-                    controller: _passwordController,
+                    controller: _confirmPasswordController,
                     label: 'Confirm Password',
-                    prefixIcon: Icons.password_outlined,
+                    prefixIcon: Icons.lock_outline,
                     keyboardType: TextInputType.visiblePassword,
-                    obscureText: _obscureConfirmePassword,
+                    obscureText: _obscurePassword,
+                    suffixIcon: IconButton(
+                      onPressed: () => setState(
+                        () => _obscureConfirmePassword =
+                            !_obscureConfirmePassword,
+                      ),
+                      icon: Icon(
+                        _obscureConfirmePassword
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                        color: AppColors.textSecondary,
+                        size: 20.sp,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 16.h),
+                  AnimatedContainer(
+                    duration: Duration(milliseconds: 300),
+                    width: double.infinity,
+                    height: 56.h,
+                    child: CustomButton(
+                      text: 'Create Account',
+                      onPressed: () {},
+                    ),
                   ),
                 ],
               ),
