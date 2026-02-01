@@ -51,6 +51,32 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 ),
                 iconSize: 36.sp,
               ),
+              SizedBox(height: 40.h),
+              Center(
+                child: Container(
+                  width: 80.w,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    color: AppColors.primary.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(20.r),
+                  ),
+                  child: Icon(
+                    Icons.lock_reset_rounded,
+                    size: 40.w,
+                    color: AppColors.primary,
+                  ),
+                ),
+              ),
+              SizedBox(height: 40.h),
+              Text(
+                'Forgot Password',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.primary,
+                  letterSpacing: -0.5,
+                ),
+              ),
             ],
           ),
         ),
