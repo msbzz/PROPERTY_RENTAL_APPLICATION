@@ -170,6 +170,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       TextButton(
                         onPressed: () => context.go('/auth'),
+                        style: TextButton.styleFrom(
+                          foregroundColor: AppColors.primary,
+                          padding: EdgeInsets.symmetric(horizontal: 8.w),
+                        ),
                         child: Text(
                           'Sign In',
                           style: TextStyle(
@@ -240,9 +244,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
         }
       } catch (e) {
         if (mounted) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(e.toString())));
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(e.toString()), backgroundColor: Colors.red),
+          );
         }
       } finally {
         if (mounted) setState(() => _isLoading = false);

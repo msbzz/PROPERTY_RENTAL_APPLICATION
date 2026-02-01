@@ -94,6 +94,17 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 label: 'Email',
                 prefixIcon: Icons.email_outlined,
                 keyboardType: TextInputType.emailAddress,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your email';
+                  }
+                  if (!RegExp(
+                    r'^[\w-\.]+@([\w-\.]+\.)+[\w-]{2,4}$',
+                  ).hasMatch(value)) {
+                    return 'Please enter a valid email';
+                  }
+                  return null;
+                },
               ),
               SizedBox(height: 32.h),
               AnimatedContainer(
@@ -101,15 +112,70 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 width: double.infinity,
                 height: 56.h,
                 child: CustomButton(
-                  text: 'Create Account',
-                  onPressed: () {}, //_handleRegister,
+                  text: 'Reset Password',
+                  onPressed: _handlePasswordReset,
                   isLoading: _isLoading,
                 ),
+              ),
+              SizedBox(height: 24.h),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Remmember your password?',
+                    style: TextStyle(
+                      color: AppColors.textSecondary,
+                      fontSize: 14.sp,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () => context.go('/auth'),
+                    style: TextButton.styleFrom(
+                      foregroundColor: AppColors.primary,
+                      padding: EdgeInsets.symmetric(horizontal: 8.w),
+                    ),
+                    child: Text(
+                      'Sign In',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14.sp,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Future<void> _handlePasswordReset() async {
+    if (_formKey.currentState!.validate()) {
+      setState(() => _isLoading = true);
+
+      try {
+        await _authController.resetPassword(_emailController.text);
+
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Password reset link sent to your email'),
+              backgroundColor: Colors.green,
+            ),
+          );
+          context.pop();
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(e.toString()), backgroundColor: Colors.red),
+          );
+        }
+      } finally {
+        if (mounted) setState(() => _isLoading = false);
+      }
+    }
   }
 }
