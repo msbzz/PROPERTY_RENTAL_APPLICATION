@@ -35,6 +35,14 @@ class _BannerCarouselState extends State<BannerCarousel> {
                       imageUrl: banner.imageUrl,
                       fit: BoxFit.cover,
                       placeholder: (context, url) => _buildShimmerEffect(),
+                      errorWidget: (context, url, error) => Container(
+                        color: Colors.grey[300],
+                        child: Icon(
+                          Icons.error_outline,
+                          color: Colors.red,
+                          size: 32.sh,
+                        ),
+                      ),
                     ),
                   ),
                 );
