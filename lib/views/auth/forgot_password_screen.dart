@@ -73,8 +73,17 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.primary,
+                  color: AppColors.textPrimary,
                   letterSpacing: -0.5,
+                ),
+              ),
+              SizedBox(height: 8.h),
+              Text(
+                'Enter your email address to reset your password',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: AppColors.textSecondary,
+                  letterSpacing: 0.2,
                 ),
               ),
             ],
