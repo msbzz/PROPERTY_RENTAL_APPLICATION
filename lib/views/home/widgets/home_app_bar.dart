@@ -11,6 +11,7 @@ class HomeAppBar extends StatelessWidget {
       floating: true,
       backgroundColor: AppColors.background,
       title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: 20),
           Text(
@@ -22,12 +23,28 @@ class HomeAppBar extends StatelessWidget {
               Icon(Icons.location_on, color: AppColors.primary, size: 20.sp),
               Text(
                 'San Francisco, CA',
-                style: TextStyle(color: AppColors.textPrimary, fontSize: 16.sp),
+                style: TextStyle(
+                  color: AppColors.textPrimary,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
+              Icon(Icons.keyboard_arrow_down, color: AppColors.textPrimary),
             ],
           ),
         ],
       ),
+      actions: [
+        CircleAvatar(
+          backgroundColor: AppColors.surface,
+          child: IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.notifications_outlined),
+            color: AppColors.textPrimary,
+          ),
+        ),
+        SizedBox(height: 16.h),
+      ],
     );
   }
 }
