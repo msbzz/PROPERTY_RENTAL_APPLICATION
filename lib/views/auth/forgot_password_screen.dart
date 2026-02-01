@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rental_application/controllers/auth_controller.dart';
+import 'package:rental_application/core/common/widgets/custom_button.dart';
+import 'package:rental_application/core/common/widgets/custom_textfield.dart';
 import 'package:rental_application/core/constants/color_constants.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
@@ -84,6 +86,24 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   fontSize: 16,
                   color: AppColors.textSecondary,
                   letterSpacing: 0.2,
+                ),
+              ),
+              SizedBox(height: 40.h),
+              CustomTextField(
+                controller: _emailController,
+                label: 'Email',
+                prefixIcon: Icons.email_outlined,
+                keyboardType: TextInputType.emailAddress,
+              ),
+              SizedBox(height: 32.h),
+              AnimatedContainer(
+                duration: Duration(milliseconds: 300),
+                width: double.infinity,
+                height: 56.h,
+                child: CustomButton(
+                  text: 'Create Account',
+                  onPressed: () {}, //_handleRegister,
+                  isLoading: _isLoading,
                 ),
               ),
             ],
