@@ -4,6 +4,7 @@ import 'package:rental_application/core/constants/color_constants.dart';
 import 'package:rental_application/core/constants/text_constants.dart';
 import 'package:rental_application/views/home/widgets/banner_carousel.dart';
 import 'package:rental_application/views/home/widgets/home_app_bar.dart';
+import 'package:rental_application/views/home/widgets/section_title.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -66,6 +67,16 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Padding(
                 padding: EdgeInsetsGeometry.only(top: 16.h),
                 child: BannerCarousel(),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: SectionTitle(
+                  title: 'Popular Properties',
+                  actionText: 'See All',
+                  onActionPressed: () {},
+                ),
               ),
             ),
           ],
