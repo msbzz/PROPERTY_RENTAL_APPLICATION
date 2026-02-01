@@ -67,7 +67,7 @@ class _BannerCarouselState extends State<BannerCarousel> {
         ),
         SizedBox(height: 12.h),
         Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: BannerAdd.dummyBanners.asMap().entries.map((entry) {
             return Container(
               width: _currentIndex == entry.key ? 24.w : 8.w,
