@@ -16,19 +16,30 @@ class SectionTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
       children: [
-        Text(
-          title,
-          style: TextStyle(
-            fontSize: 18.sp,
-            color: AppColors.textPrimary,
-            fontWeight: FontWeight.bold,
-          ),
+        SizedBox(height: 10.h),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 18.sp,
+                color: AppColors.textPrimary,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            if (actionText != null)
+              TextButton(
+                onPressed: onActionPressed,
+                child: Text(
+                  actionText!,
+                  style: TextStyle(color: AppColors.primary, fontSize: 14.sp),
+                ),
+              ),
+          ],
         ),
-        if (actionText != null)
-          TextButton(onPressed: onActionPressed, child: Text(actionText!)),
       ],
     );
   }
