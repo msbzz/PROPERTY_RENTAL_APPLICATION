@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rental_application/core/common/widgets/page_layout.dart';
 import 'package:rental_application/core/constants/color_constants.dart';
 import 'package:rental_application/models/proterty_model.dart';
+import 'package:rental_application/views/home/widgets/property_card.dart';
 
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({super.key});
@@ -22,20 +23,39 @@ class FavoritesScreen extends StatelessWidget {
                     color: AppColors.textSecondary,
                   ),
                   SizedBox(height: 16.h),
-                  Text('No Favorites yet'),
+                  Text(
+                    'No Favorites yet',
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      color: AppColors.textPrimary,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(height: 8.h),
+                  Text(
+                    'Start saving your favorites properties',
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
                 ],
               ),
             )
           : GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                mainAxisExtent: 16.h,
-                crossAxisSpacing: 16.h,
+                mainAxisExtent: 260.h,
+                mainAxisSpacing: 16.h,
+                crossAxisSpacing: 12.w,
                 childAspectRatio: 0.65,
               ),
-              itemBuilder: (context, index) {},
+              itemCount: Property.dummyProperties.length,
+              itemBuilder: (context, index) {
+                final property = Property.dummyProperties[index];
+                return PropertyCard(onTap: () {}, property: property);
+              },
             ),
-      //actions: [],
     );
   }
 }
