@@ -25,6 +25,15 @@ class BookingsList extends StatelessWidget {
               size: 64.sp,
               color: AppColors.textSecondary,
             ),
+            SizedBox(height: 16.h),
+            Text(
+              'No ${status.name} booking',
+              style: TextStyle(
+                fontSize: 18.sp,
+                color: AppColors.textPrimary,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
           ],
         ),
       );
