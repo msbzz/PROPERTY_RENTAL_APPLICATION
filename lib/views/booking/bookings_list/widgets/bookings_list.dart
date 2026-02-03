@@ -41,6 +41,7 @@ class BookingsList extends StatelessWidget {
     }
     return ListView.builder(
       padding: EdgeInsets.all(16.w),
+      itemCount: bookings.length,
       itemBuilder: (context, index) {
         final booking = bookings[index];
         return BookingCard(booking: booking);
