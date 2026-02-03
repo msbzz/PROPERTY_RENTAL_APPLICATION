@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rental_application/core/constants/color_constants.dart';
 import 'package:rental_application/models/booking_model.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:intl/intl.dart';
 
 class BookingCard extends StatelessWidget {
   final Booking booking;
@@ -72,13 +73,17 @@ class BookingCard extends StatelessWidget {
                       Text(
                         '\$${booking.totalPrice.toStringAsFixed(2)}',
                         style: TextStyle(
-                          fontSize: 20.sp,
+                          fontSize: 18.sp,
                           fontWeight: FontWeight.w700,
                           color: AppColors.primary,
                         ),
                       ),
                     ],
                   ),
+                  SizedBox(height: 8.h),
+                  _buildLocation(),
+                  SizedBox(height: 16.h),
+                  _buildDateRange(),
                 ],
               ),
             ),
@@ -121,6 +126,49 @@ class BookingCard extends StatelessWidget {
           fontWeight: FontWeight.w600,
           color: AppColors.primary,
         ),
+      ),
+    );
+  }
+
+  Widget _buildLocation() {
+    return Row(
+      children: [
+        Icon(Icons.location_on_outlined, size: 16.sp, color: AppColors.primary),
+        SizedBox(width: 4.w),
+        Expanded(
+          child: Text(
+            booking.property.location,
+            style: TextStyle(fontSize: 14.sp, color: AppColors.textSecondary),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDateRange() {
+    return Container(
+      padding: EdgeInsets.all(12.w),
+      decoration: BoxDecoration(
+        color: AppColors.primary.withValues(alpha: 0.05),
+        borderRadius: BorderRadius.circular(12.r),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            Icons.calendar_today_outlined,
+            size: 16.sp,
+            color: AppColors.primary,
+          ),
+          SizedBox(width: 8.w),
+          Text(
+            '${DateFormat('MMM dd').format(booking.checkIn)} - ${DateFormat('MMM dd').format(booking.checkOut)}',
+            style: TextStyle(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w600,
+              color: AppColors.textPrimary,
+            ),
+          ),
+        ],
       ),
     );
   }
