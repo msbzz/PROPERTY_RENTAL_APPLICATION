@@ -109,7 +109,20 @@ class BookingCard extends StatelessWidget {
   }
 
   Widget _builErrorWidget() {
-    return Container();
+    return Container(
+      height: 180.h,
+      width: double.infinity,
+      color: Colors.grey[100],
+      child: Column(
+        children: [
+          Icon(Icons.error_outline, color: Colors.red, size: 32.sp),
+          Text(
+            'Failed to load image',
+            style: TextStyle(fontSize: 14.sp, color: AppColors.textSecondary),
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _buildStatusChip(BookingStatus status) {
