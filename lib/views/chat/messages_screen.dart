@@ -91,10 +91,18 @@ class MessagesScreen extends StatelessWidget {
                     horizontal: 16.w,
                     vertical: 8.h,
                   ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.r),
+                  ),
+                  backgroundColor: AppColors.primary.withValues(alpha: 0.08),
                 ),
                 label: Text(
                   'Browse Properties',
-                  style: TextStyle(fontSize: 14.sp),
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.primary,
+                  ),
                 ),
               ),
             ],
