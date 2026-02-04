@@ -20,7 +20,6 @@ class Message {
   });
 
   static List<Message> dummyMessages = [
-    /**
     Message(
       id: '1',
       senderId: '2',
@@ -40,6 +39,6 @@ class Message {
       content: 'Is the property still available ?',
       timeStamp: DateTime.now().subtract(const Duration(minutes: 30)),
       isRead: true,
-    ), */
+    ),
   ];
 }

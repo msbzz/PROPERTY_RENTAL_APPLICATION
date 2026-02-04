@@ -27,7 +27,26 @@ class MessagesScreen extends StatelessWidget {
         color: AppColors.surface,
         child: userMessages.isEmpty
             ? _buildEmptyState(context, isLandLord)
-            : CustomScrollView(),
+            : CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20.w,
+                        vertical: 16.h,
+                      ),
+                      child: Text(
+                        'Recents Messages',
+                        style: TextStyle(
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.textPrimary,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
       ),
     );
   }
