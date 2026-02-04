@@ -20,7 +20,7 @@ class MessagesScreen extends StatelessWidget {
         .where((m) => m.senderId == userId || m.recieverId == userId)
         .toList();
 
-    debugPrint('Array messages ==>>>> ${userMessages.length.toString()}');
+    //debugPrint('Array messages ==>>>> ${userMessages.length.toString()}');
     return PageLayout(
       title: 'Messages',
       body: Container(
@@ -33,33 +33,44 @@ class MessagesScreen extends StatelessWidget {
   }
 
   Widget _buildEmptyState(BuildContext context, bool isLandLord) {
-    return Container(
-      padding: EdgeInsets.all(32.w),
-      margin: EdgeInsets.all(24.w),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.03),
-            blurRadius: 15,
-            offset: Offset(0, 5),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            padding: EdgeInsets.all(24.w),
-            decoration: BoxDecoration(
-              color: AppColors.primary.withValues(alpha: 0.08),
-              shape: BoxShape.circle,
+    return Center(
+      child: Container(
+        padding: EdgeInsets.all(32.w),
+        margin: EdgeInsets.all(24.w),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20.r),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.03),
+              blurRadius: 15,
+              offset: Offset(0, 5),
             ),
-            child: Icon(Icons.chat_bubble_outline_outlined, size: 48.sp),
-          ),
-        ],
+          ],
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: EdgeInsets.all(24.w),
+              decoration: BoxDecoration(
+                color: AppColors.primary.withValues(alpha: 0.08),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(Icons.chat_bubble_outline_outlined, size: 48.sp),
+            ),
+            SizedBox(height: 24.h),
+            Text(
+              'No Messages Yet',
+              style: TextStyle(
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w600,
+                color: AppColors.textPrimary,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

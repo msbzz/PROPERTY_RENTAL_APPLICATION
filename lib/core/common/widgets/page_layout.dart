@@ -17,7 +17,7 @@ class PageLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(title: Text(title), actions: actions),
+      appBar: AppBar(centerTitle: false, title: Text(title), actions: actions),
       body: SafeArea(child: body),
     );
   }
