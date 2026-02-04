@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rental_application/core/common/widgets/page_layout.dart';
 import 'package:rental_application/core/constants/color_constants.dart';
 import 'package:rental_application/models/message.dart';
+import 'package:rental_application/views/chat/widget/message_card.dart';
 
 class MessagesScreen extends StatelessWidget {
   final bool isLandLord;
@@ -44,6 +45,16 @@ class MessagesScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                  ),
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate((context, index) {
+                      final message = userMessages[index];
+                      return MessageCard(
+                        message: message,
+                        isLandLord: isLandLord,
+                        userId: userId,
+                      );
+                    }),
                   ),
                 ],
               ),
