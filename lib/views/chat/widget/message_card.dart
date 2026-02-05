@@ -68,8 +68,25 @@ class MessageCard extends StatelessWidget {
               SizedBox(width: 16.w),
               Expanded(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text(oteherPartyName)],
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          oteherPartyName,
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: isUnread
+                                ? FontWeight.w600
+                                : FontWeight.w500,
+                            color: AppColors.textPrimary,
+                          ),
+                        ),
+                        Text(timestamp),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ],
