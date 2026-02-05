@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rental_application/core/constants/color_constants.dart';
 import 'package:rental_application/models/message.dart';
+import 'package:rental_application/views/chat/widget/message_buble.dart';
 import 'package:rental_application/views/home/widgets/home_app_bar.dart';
 
 class ChatDetailScreen extends StatefulWidget {
@@ -43,6 +44,25 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
             ),
           ],
         ),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              controller: _scrollController,
+              padding: EdgeInsets.all(16.w),
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                final bool isMe = index % 2 == 0;
+                return MessageBubble(
+                  message: 'This is a simple message $index',
+                  timestamp: DateTime.now(),
+                  isMe: isMe,
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
