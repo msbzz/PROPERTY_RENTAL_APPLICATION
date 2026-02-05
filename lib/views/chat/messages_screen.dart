@@ -54,7 +54,7 @@ class MessagesScreen extends StatelessWidget {
                         isLandLord: isLandLord,
                         userId: userId,
                       );
-                    }),
+                    }, childCount: userMessages.length),
                   ),
                 ],
               ),

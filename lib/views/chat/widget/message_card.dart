@@ -56,7 +56,21 @@ class MessageCard extends StatelessWidget {
                 backgroundColor: isUnread
                     ? AppColors.primary.withValues(alpha: 0.1)
                     : Colors.grey.withValues(alpha: 0.1),
-                child: Text(oteherPartyName[0].toUpperCase()),
+                child: Text(
+                  oteherPartyName[0].toUpperCase(),
+                  style: TextStyle(
+                    color: isUnread ? AppColors.primary : Colors.grey[700],
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16.sp,
+                  ),
+                ),
+              ),
+              SizedBox(width: 16.w),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [Text(oteherPartyName)],
+                ),
               ),
             ],
           ),
