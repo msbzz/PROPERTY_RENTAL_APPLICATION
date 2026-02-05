@@ -83,7 +83,39 @@ class MessageCard extends StatelessWidget {
                             color: AppColors.textPrimary,
                           ),
                         ),
-                        Text(timestamp),
+                        Text(
+                          timestamp,
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 6.h),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            message.content,
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              color: isUnread
+                                  ? AppColors.textPrimary
+                                  : AppColors.textSecondary,
+                              fontWeight: isUnread
+                                  ? FontWeight.w500
+                                  : FontWeight.w400,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 8.w),
+                          width: 10.w,
+                          height: 10.w,
+                        ),
                       ],
                     ),
                   ],
