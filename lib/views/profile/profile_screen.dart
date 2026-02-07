@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rental_application/core/constants/color_constants.dart';
 import 'package:rental_application/views/profile/widget/profile_app_bar.dart';
+import 'package:rental_application/views/profile/widget/profile_card.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -12,6 +14,12 @@ class ProfileScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           ProfileAppBar(name: 'John Doe', email: 'john.doe@example.com'),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.all(16.w),
+              child: ProfileCard(title: 'Account', items: []),
+            ),
+          ),
         ],
       ),
     );
